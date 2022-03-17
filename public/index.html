@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | BookMarkIt</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+  </head>
+  <body class="body">
+    <header>
+      <nav class="navbar">
+        <div>
+          <h1 class="navhead">BookMarkIt</h1>
+        </div>
+        <div id="index-emailId" style="color: white"></div>
+        <div>
+          <button class="button-login" id="saveBtn">Save to Google</button>
+          <button class="button-login" id="logout-btn">Log Out</button>
+        </div>
+      </nav>
+    </header>
+    <section class="bookmark-section">
+      <div class="form-div">
+        <form class="form" id="myform">
+          <div class="form-head">
+            <h1 class="">BookMark Websites</h1>
+          </div>
+          <div class="inputsdiv">
+            <input
+              type="text"
+              placeholder="Website Name"
+              class="sitename"
+              id="sitename"
+            />
+            <input
+              type="text"
+              placeholder="Website Url"
+              class="siteurl"
+              id="siteurl"
+            />
+            <button type="submit" class="button" id="form-submit">Add</button>
+          </div>
+        </form>
+      </div>
+      <div class="bookmarks-container" id="bookmarks-container">
+        <!-- <div class="bookmarks">
+          <div class="bookmark-name">
+            <h1>Hello</h1>
+          </div>
+          <div>
+            <a class="visitlink" href="#" target="_blank"
+              ><button class="button-visit">Visit</button></a
+            >
+            <button class="button-del">Delete</button>
+          </div>
+        </div> -->
+      </div>
+    </section>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB7muMpGMFJ9wwwzUUPmtHz9rLYmyFWFlc",
+        authDomain: "bookmarkapp-32976.firebaseapp.com",
+        projectId: "bookmarkapp-32976",
+        storageBucket: "bookmarkapp-32976.appspot.com",
+        messagingSenderId: "320351344855",
+        appId: "1:320351344855:web:db3eaabbcadae7112ab892",
+        measurementId: "G-FZ7R417CYL",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      // Initialize Firestore
+      const db = firebase.firestore();
+      const auth = firebase.auth();
+      //db.settings({ timestampsInSnapshot: true });
+      //Logout
+      const logoutBtn = document
+        .getElementById("logout-btn")
+        .addEventListener("click", function () {
+          firebase
+            .auth()
+            .signOut()
+            .then(() => {
+              localStorage.removeItem("userData");
+              localStorage.removeItem("bookmarks");
+              location = "./login.html";
+            })
+            .catch((error) => {
+              // An error happened.
+              alert("An error happened");
+            });
+        });
+    </script>
+    <script src="./main.js"></script>
+  </body>
+</html>

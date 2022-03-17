@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./signup.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <title>LogIn | BookMarkIt</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Log In</h2>
+      </div>
+      <form id="form-login" class="form">
+        <div class="form-control">
+          <label for="username">Email</label>
+          <input type="email" placeholder="Email-Id" id="email-login" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <div class="form-control">
+          <label for="username">Password</label>
+          <input type="password" placeholder="Password" id="password-login" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+        <button>Submit</button>
+        <div style="margin: 10px">
+          <a href="./signup.html">Don't have an account?</a>
+        </div>
+        <!-- <div style="margin: 10px">
+          <a href="./signup.html">Forgot Password?</a>
+        </div> -->
+      </form>
+    </div>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyB7muMpGMFJ9wwwzUUPmtHz9rLYmyFWFlc",
+        authDomain: "bookmarkapp-32976.firebaseapp.com",
+        projectId: "bookmarkapp-32976",
+        storageBucket: "bookmarkapp-32976.appspot.com",
+        messagingSenderId: "320351344855",
+        appId: "1:320351344855:web:db3eaabbcadae7112ab892",
+        measurementId: "G-FZ7R417CYL",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      // Initialize Firestore
+      const db = firebase.firestore();
+      const auth = firebase.auth();
+    </script>
+    <script src="./loginAuth.js"></script>
+  </body>
+</html>
